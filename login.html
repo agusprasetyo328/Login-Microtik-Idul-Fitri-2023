@@ -1,0 +1,97 @@
+<!Doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="pragma" content="no-cache" />
+    <meta http-equiv="expires" content="-1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Log in</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style type="text/css">
+        table thead th,table tr td{
+            border: 1px solid #ffffff;
+            padding: 5px;
+            font-weight: 600;
+        }
+        table td:first-child{
+            font-weight: 600;
+        }
+        input[type="password"], input[type="text"]{
+            background-color: #ffffff;
+        }
+    </style>
+</head>
+
+<body class="lite" style="height: 100%;">
+<form name="sendin" action="$(link-login-only)" method="post" style="display:none">
+        <input type="hidden" name="username" />
+        <input type="hidden" name="password" />
+        <input type="hidden" name="dst" value="$(link-orig)" />
+        <input type="hidden" name="popup" value="true" />
+    </form>
+
+    <script src="/md5.js"></script>
+    <script>
+        function doLogin() {
+            document.sendin.username.value = document.login.username.value;
+            document.sendin.password.value = hexMD5('$(chap-id)' + document.login.password.value + '$(chap-challenge)');
+            document.sendin.submit();
+            return false;
+        }
+
+    </script>
+    <div class="ie-fixMinHeight" style="height: 100%;">
+
+        <div class="main" style="background-image: url('./img/bg-bottom.jpg');background-repeat: no-repeat;background-size:cover;display: flex;position: relative;">
+
+            <div class="wrap animated fadeIn" style="max-width:480px; margin:auto;padding: 0;background-size: cover;background-color: #f7f7f7;">
+
+                <div class="bg-overlay" style="padding:20px;background-color:rgba(0,0,0,.2);">
+
+                    <div style="text-align: center;">
+                        <h4 style="margin-bottom: 15px;color:#007357;">Kami Keluarga Mengucapkan: </h4>
+                    </div>
+
+                    <div class="logo" style="margin: 0; max-width: 100%;">
+                        <img src="./img/top.png" alt="" style="max-width: 200px;margin: 0 auto;display: block;" />
+                    </div>                    
+
+                    <div class="logo" style="margin: 0; max-width: 100%;">
+                        <img src="./img/bottom.png" alt="" style="max-width: 200px;margin: 0 auto;display: block;" />
+                    </div>
+
+                    <form name="login" action="$(link-login-only)" method="post" $(if chap-id) onSubmit="return doLogin()" $(endif) style="text-align: center;margin-bottom: 15px;">
+                        <input type="hidden" name="dst" value="$(link-orig)" />
+                        <input type="hidden" name="popup" value="true" />
+
+                        <h4 style="margin-bottom: 15px;color:#007357;">Masukan Username dan Password</h4>
+                        <label>
+                            <img class="ico" src="img/user.svg" alt="#" />
+                            <input name="username" type="text"placeholder="Username" />
+                        </label>
+
+                        <label>
+                            <img class="ico" src="img/password.svg" alt="#" />
+                            <input name="password" type="Password" placeholder="Password" />
+                        </label>
+
+                        <input type="submit" value="Connect" style="background-color: #007357;"/>
+
+                    </form>
+                    <p style="color:#007357;margin-bottom: 10px;font-weight:700;">Free wifi idul fitri:</p>
+                    <p style="color:#007357;font-weight: 700;">USERNAME: Digitec</p>
+                    <p style="color:#007357;font-weight: 700;">PASSWORD: maaflahirbatin</p>
+                    <p style="color:#007357;">*Berlaku: 19-25 April 2023</p>  
+                    </p>
+
+                    <p style="color:#007357;font-weight:700;text-align:center;margin-top:20px;">Powered by : <a style="color:#007357;font-weight:700;" href="https://archivescode.com">agusprasetyo.online</a></p>
+
+                </div>           
+
+            </div>
+
+        </div>
+    </div>
+</body>
+
+</html>
